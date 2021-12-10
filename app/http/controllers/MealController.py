@@ -30,20 +30,22 @@ class MealController(Controller):
         """Show form to create new resource listings
          ex. Get().route("/create", MealController)
         """
-        days = self.request.input("days")
-        subject = self.request.input("subject")
-        meal = Meal.create({"days": days, "subject": subject})
-        return meal
+        day = self.request.input("day")
+        meal1 = self.request.input("meal")
+        name = self.request.input("name")
+        meal1 = Meal.create({"day": day, "meal": meal1, "name": name})
+        return meal1
 
     def update(self):
         """Edit an existing resource listing
         ex. Post target to update new Model
         Post().route("/update", MealController)
         """
-        days = self.request.input("days")
-        subject = self.request.input("subject")
+        day = self.request.input("day")
+        meal = self.request.input("meal")
+        name = self.request.input("name")
         id = self.request.param("id")
-        Meal.where("id", id).update({"days": days, "subject": subject})
+        Meal.where("id", id).update({"day": day, "meal": meal, "name": name})
         return Meal.where("id", id).get()
 
     def destroy(self):

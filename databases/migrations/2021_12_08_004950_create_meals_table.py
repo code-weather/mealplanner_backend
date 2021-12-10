@@ -10,8 +10,9 @@ class CreateMealsTable(Migration):
         """
         with self.schema.create("meals") as table:
             table.increments("id")
-            table.string("days")
-            table.string("subject")
+            table.string("day")
+            table.string("meal")
+            table.string("name")
             table.timestamps()
 
     def down(self):
